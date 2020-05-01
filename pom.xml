@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.hspf.schuster</groupId>
-    <artifactId>example.rs.jax</artifactId>
+    <artifactId>de.hspf.quote-service</artifactId>
     <version>0.42</version>
     <packaging>war</packaging>
 
-    <name>example.rs.jax</name>
+    <name>quote-service</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
