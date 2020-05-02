@@ -86,4 +86,13 @@ public class QuotesLoaderBeanTest {
         
         assertTrue(quote.length() > 0);
     }
+    
+    @Test
+    public void whenGetQuote_thenQuoteShouldBeString() {
+        String quote = quotesLoaderBean.getQuote();
+        Properties quotes = mock(Properties.class);
+        when(quotes.getProperty(isA(String.class))).thenReturn(quote);
+        
+        assertTrue(String.class.isInstance(quote));
+    }
 }
