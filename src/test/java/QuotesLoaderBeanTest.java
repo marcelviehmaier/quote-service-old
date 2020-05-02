@@ -58,4 +58,11 @@ public class QuotesLoaderBeanTest {
         
         assertEquals("Citations should contain the same quote", citationLoaded.getQuote(), citation.getQuote());
     }
+    
+    @Test
+    public void whenCreateCitation_thenCitationShouldBeReturned() {
+        Citation citationLoaded = quotesLoaderBean.createCitation("This is just a test quote");
+        
+        assertTrue(Citation.class.isInstance(citationLoaded));
+    }
 }
