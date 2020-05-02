@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  *
@@ -46,5 +48,14 @@ public class QuotesLoaderBeanTest {
        Citation citationLoaded = quotesLoaderBean.createCitation("");
         
        assertNotNull("Citation should not be null", citationLoaded);
+    }
+    
+    @Test
+    public void whenCreateCitationWithQuote_thenCitationShouldHaveQuote() {
+        Citation citation = mock(Citation.class);
+        Citation citationLoaded = quotesLoaderBean.createCitation("This is just a test quote");
+        when(citation.getQuote()).thenReturn("This is just a test quote");
+        
+        assertEquals("Citations should contain the same quote", citationLoaded.getQuote(), citation.getQuote());
     }
 }
