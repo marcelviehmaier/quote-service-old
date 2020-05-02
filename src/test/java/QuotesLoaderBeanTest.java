@@ -77,4 +77,13 @@ public class QuotesLoaderBeanTest {
         
         assertNotNull("Quote string should not be null", quote);
     }
+    
+    @Test
+    public void whenGetQuote_thenQuoteLengthShouldBeGreaterThanOne() {
+        String quote = quotesLoaderBean.getQuote();
+        Properties quotes = mock(Properties.class);
+        when(quotes.getProperty(isA(String.class))).thenReturn(quote);
+        
+        assertTrue(quote.length() > 0);
+    }
 }
