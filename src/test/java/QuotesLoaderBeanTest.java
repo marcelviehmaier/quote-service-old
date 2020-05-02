@@ -6,12 +6,14 @@
 
 import de.hspf.schuster.rs.jax.example.Citation;
 import de.hspf.schuster.rs.jax.example.QuotesLoaderBean;
+import java.util.Properties;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -64,5 +66,15 @@ public class QuotesLoaderBeanTest {
         Citation citationLoaded = quotesLoaderBean.createCitation("This is just a test quote");
         
         assertTrue(Citation.class.isInstance(citationLoaded));
+    }
+    
+    @Test
+    public void whenGetQuote_thenQuoteShouldNotBeNull() {
+        Properties quotes = mock(Properties.class);
+        when(quotes.getProperty(isA(String.class))).thenReturn("This is a citation");
+        
+        String quote = quotesLoaderBean.getQuote();
+        
+        assertNotNull("Quote string should not be null", quote);
     }
 }
