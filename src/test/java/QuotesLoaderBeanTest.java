@@ -7,6 +7,9 @@
 import de.hspf.schuster.rs.jax.example.Citation;
 import de.hspf.schuster.rs.jax.example.QuotesLoaderBean;
 import java.util.Properties;
+import static org.easymock.EasyMock.anyString;
+import static org.easymock.EasyMock.createNiceMock;
+import static org.easymock.EasyMock.expect;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -82,7 +85,7 @@ public class QuotesLoaderBeanTest {
     public void whenGetQuote_thenQuoteLengthShouldBeGreaterThanOne() {
         String quote = quotesLoaderBean.getQuote();
         Properties quotes = mock(Properties.class);
-        when(quotes.getProperty(isA(String.class))).thenReturn(quote);
+        when(quotes.getProperty("1")).thenReturn(quote);
         
         assertTrue(quote.length() > 0);
     }
@@ -94,5 +97,14 @@ public class QuotesLoaderBeanTest {
         when(quotes.getProperty(isA(String.class))).thenReturn(quote);
         
         assertTrue(String.class.isInstance(quote));
+    }
+    
+    @Test
+    public void whenGetName_thenStringShouldBeReturned() {
+        String name = quotesLoaderBean.getName();
+        Properties names = createNiceMock(Properties.class);
+        expect(names.getProperty(anyString())).andReturn(name);
+        
+        assertTrue(String.class.isInstance(name));
     }
 }
