@@ -43,6 +43,8 @@ public class QuotesLoaderBeanTest {
 
     @Test
     public void whenCreateCitation_thenCitationShouldNotBeNull() {
-       // todo
+       Citation citationLoaded = quotesLoaderBean.createCitation("");
+        
+       assertNotNull("Citation should not be null", citationLoaded);
     }
 }
